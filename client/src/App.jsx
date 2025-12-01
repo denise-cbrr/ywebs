@@ -8,31 +8,36 @@ import Hero from './components/hero/hero';
 import About from './components/about/about';
 import Services from './components/services/services';
 import Faqs from './components/faqs/faqs';
+import Login from './Login';
+
 
 function App() {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState([]);
 
 
-  const fetchAPI = async() => {
-    const response = await axios.get("http://localhost:8080/api");
-    setArray(response.data.fruits);
-    console.log(response.data.fruits)
-  };
+  // const fetchAPI = async() => {
+  //   const response = await axios.get("http://localhost:8080/api");
+  //   setArray(response.data.fruits);
+  //   console.log(response.data.fruits)
+  // };
 
-  useEffect(() => {
-    fetchAPI();
-  }, []);
+  // useEffect(() => {
+  //   fetchAPI();
+  // }, []);
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <Hero />
       <About />
       <Services />
-      <Faqs />
-    </>
+      <Faqs /> */}
+      <Login />
+   </>
+
+
   )
 }
 
-export default App
+export default App;
