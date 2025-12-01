@@ -28,11 +28,11 @@ function App() {
 
   return (
     <>
-      {/* <Navbar />
+      <Navbar />
       <Hero />
       <About />
       <Services />
-      <Faqs /> */}
+      <Faqs />
       <Login />
    </>
 
