@@ -8,7 +8,7 @@ import Hero from './components/hero/hero';
 import About from './components/about/about';
 import Services from './components/services/services';
 import Faqs from './components/faqs/faqs';
-import Login from './Login';
+import Login from './components/register/register';
 
 
 function App() {

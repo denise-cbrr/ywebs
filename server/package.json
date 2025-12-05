@@ -14,7 +14,7 @@
   "dependencies": {
     "@filebase/sdk": "^1.0.6",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
