@@ -29,6 +29,16 @@
     gap: 1rem;
 }
 
+.services-title {
+    white-space: nowrap;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(24px, 2.5vw, 60px);
+    font-weight: lighter;
+    text-align: left;
+    justify-content: center;
+    color: white;
+}
+
 .i {
     font-style: italic;
 }
@@ -42,7 +52,7 @@
 
 .info-cont p {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: clamp(20px, 2.5vw, 26px);
+    font-size: clamp(14px, 2.5vw, 26px);
     font-weight: 350;
     color: white;
     margin: 0;
@@ -76,4 +86,14 @@
     align-items: center;
     color: cornflowerblue;
 
+}
+
+@media (max-width: 1044px) {
+
+    .mybox {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
 }

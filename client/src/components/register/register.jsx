@@ -1,5 +1,6 @@
 // Import React's useState hook to manage component state (data that can change)
 import { useState } from 'react';
+import './register.css';
 
 export default function Register() {
   // STATE: Store all form field values in one object
@@ -15,10 +16,10 @@ export default function Register() {
     project2Name: '',
     project2Url: ''
   });
-  
+
   // STATE: Store success/error messages to show the user
   const [message, setMessage] = useState('');
-  
+
   // STATE: Track if we're currently submitting (to disable button and show loading text)
   const [loading, setLoading] = useState(false);
 
@@ -68,7 +69,7 @@ export default function Register() {
       if (data.success) {
         // Show success message
         setMessage('Registration successful!');
-        
+
         // Clear the form (reset all fields to empty strings)
         setFormData({
           name: '',
@@ -97,175 +98,179 @@ export default function Register() {
 
   // RENDER: The JSX (HTML-like code) that displays the form
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-100 p-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-lg shadow-xl p-8">
-          {/* Page Title */}
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">Student Registration</h1>
-          
-          <div className="space-y-4">
-            {/* NAME INPUT - Required field */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Name *
+    <div id="registration" className="registration">
+      <div className="registration-box">
+
+        {/* Page Title */}
+        <h1 className="reg-title">Want to join our team?</h1>
+
+        <div className="form-cont">
+          {/* NAME INPUT - Required field */}
+          <div className='req-field'>
+            <label className="field-title">
+              Name*:
+            </label>
+            <input
+              type="text"
+              name="name"  // This matches the key in formData
+              value={formData.name}  // Display current value from state
+              onChange={handleChange}  // Call handleChange when user types
+              className="input-normal"
+              placeholder='First Last'
+            />
+          </div>
+
+          {/* EMAIL INPUT - Required field */}
+          <div className='req-field'>
+            <label className="field-title">
+              Email*:
+            </label>
+            <input
+              type="email"  // Browser validates it's a proper email format
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="first.last@yale.edu"
+              className="input-normal"
+            />
+          </div>
+
+          {/* COLLEGE INPUT - Optional field */}
+          <div className='req-field'>
+            <label className="field-title">
+              College:
+            </label>
+            <input
+              type="text"
+              name="college"
+              value={formData.college}
+              onChange={handleChange}
+              className="input-normal"
+              placeholder="What's the best residential college?"
+            />
+          </div>
+
+          {/* YEAR INPUT - Optional field, free text */}
+          <div className='req-field'>
+            <label className="field-title">
+              Class:
+            </label>
+            <input
+              type="text"
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              placeholder="e.g. 2028, 2029, etc."  // Gray text shown when empty
+              className="input-normal"
+            />
+          </div>
+
+          {/* BIO INPUT - Optional field, multi-line text area */}
+          <div className='req-field'>
+            <label className="field-title">
+              Bio:
+            </label>
+            <textarea
+              name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              rows="4"  // Show 4 rows of text
+              className="input-resize"
+              placeholder='Tell us about yourself!'
+            />
+          </div>
+
+          {/* PROJECT 1 SECTION */}
+          <div className="proj-container">
+            <h2 className="proj-title">Project 1</h2>
+            {/* Project 1 Name */}
+            <div className='req-field'>
+              <label className="field-title">
+                Title:
               </label>
               <input
                 type="text"
-                name="name"  // This matches the key in formData
-                value={formData.name}  // Display current value from state
-                onChange={handleChange}  // Call handleChange when user types
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                name="project1Name"
+                value={formData.project1Name}
+                onChange={handleChange}
+                placeholder="e.g. My Portfolio Website"
+                className="input-normal"
               />
             </div>
 
-            {/* EMAIL INPUT - Required field */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email *
+            {/* Project 1 URL */}
+            <div className='req-field'>
+              <label className="field-title">
+                URL:
               </label>
               <input
-                type="email"  // Browser validates it's a proper email format
-                name="email"
-                value={formData.email}
+                type="url"  // Browser validates it's a proper URL format
+                name="project1Url"
+                value={formData.project1Url}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="https://example.com"
+                className="input-normal"
               />
             </div>
+          </div>
 
-            {/* COLLEGE INPUT - Optional field */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                College
-              </label>
-              <input
-                type="text"
-                name="college"
-                value={formData.college}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            {/* YEAR INPUT - Optional field, free text */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Year
+          {/* PROJECT 2 SECTION */}
+          <div className="proj-container">
+            <h2 className="proj-title">Project 2</h2>
+            {/* Project 2 Name */}
+            <div className='req-field'>
+              <label className="field-title">
+                Title:
               </label>
               <input
                 type="text"
-                name="year"
-                value={formData.year}
+                name="project2Name"
+                value={formData.project2Name}
                 onChange={handleChange}
-                placeholder="e.g., Sophomore, 2nd year, etc."  // Gray text shown when empty
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="e.g. Mobile App"
+                className="input-normal"
               />
             </div>
 
-            {/* BIO INPUT - Optional field, multi-line text area */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Bio
+            {/* Project 2 URL */}
+            <div className='req-field'>
+              <label className="field-title">
+                URL:
               </label>
-              <textarea
-                name="bio"
-                value={formData.bio}
+              <input
+                type="url"
+                name="project2Url"
+                value={formData.project2Url}
                 onChange={handleChange}
-                rows="4"  // Show 4 rows of text
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="https://example.com"
+                className="input-normal"
               />
             </div>
+          </div>
 
-            {/* PROJECT 1 SECTION */}
-            <div className="border-t pt-4">
-              <h2 className="text-lg font-semibold text-gray-800 mb-3">Project 1</h2>
-              <div className="space-y-3">
-                {/* Project 1 Name */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Project Name
-                  </label>
-                  <input
-                    type="text"
-                    name="project1Name"
-                    value={formData.project1Name}
-                    onChange={handleChange}
-                    placeholder="e.g., My Portfolio Website"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                {/* Project 1 URL */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Project URL
-                  </label>
-                  <input
-                    type="url"  // Browser validates it's a proper URL format
-                    name="project1Url"
-                    value={formData.project1Url}
-                    onChange={handleChange}
-                    placeholder="https://example.com"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-            </div>
+          {/* SUBMIT BUTTON */}
+        </div>
 
-            {/* PROJECT 2 SECTION */}
-            <div className="border-t pt-4">
-              <h2 className="text-lg font-semibold text-gray-800 mb-3">Project 2</h2>
-              <div className="space-y-3">
-                {/* Project 2 Name */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Project Name
-                  </label>
-                  <input
-                    type="text"
-                    name="project2Name"
-                    value={formData.project2Name}
-                    onChange={handleChange}
-                    placeholder="e.g., Mobile App"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                {/* Project 2 URL */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Project URL
-                  </label>
-                  <input
-                    type="url"
-                    name="project2Url"
-                    value={formData.project2Url}
-                    onChange={handleChange}
-                    placeholder="https://example.com"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* SUBMIT BUTTON */}
+        <div className="submit-cont">
             <button
               onClick={handleSubmit}  // Call handleSubmit when clicked
               disabled={loading || !formData.name || !formData.email}  // Disable if loading or required fields empty
-              className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed mt-6"
+              className="reg-btn"
             >
               {/* Show different text based on loading state */}
-              {loading ? 'Submitting...' : 'Register'}
+              {loading ? 'Submitting...' : "I'm ready to build!"}
             </button>
-
-            {/* SUCCESS/ERROR MESSAGE - Only shown if message exists */}
-            {message && (
-              <div className={`p-4 rounded-lg ${message.includes('successful') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                {message}
-              </div>
-            )}
           </div>
-        </div>
+
+          {/* SUCCESS/ERROR MESSAGE - Only shown if message exists */}
+          {message && (
+            <div className={`message-box ${message.includes('successful') ? 'success' : 'error'}`}>
+              {message}
+            </div>
+          )}
       </div>
+
     </div>
+
   );
 }

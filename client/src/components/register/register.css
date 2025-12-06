@@ -1,0 +1,137 @@
+.registration {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.registration-box {
+    width: 700px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: cornflowerblue;
+    border: 0;
+    border-radius: 0px;
+    padding: 0rem 1rem;
+}
+
+.reg-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(30px, 2.5vw, 60px);
+    font-weight: lighter;
+    text-align: center;
+    justify-content: center;
+    color: white;
+}
+.it {
+    font-style: italic;
+}
+
+.form-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    padding: 1rem 1rem;
+    gap: 1rem;
+}
+.req-field {
+    display: grid;
+    grid-template-columns: 100px 1fr; /* label + input */
+    width: 100%;
+    align-items: center;
+
+}
+
+.field-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(20px, 2.5vw, 20px);
+    font-weight: 400;
+    color: white;
+    margin: 0;
+}
+
+.input-normal {
+    width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;     /* 🌟 super rounded */
+    border: 0;
+    background-color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.input-resize {
+    width: 80%;                 /* you can override this anytime */
+    padding: 0.75rem 1rem;      /* px-4 py-2 */
+    border: 0;  /* gray-300 */
+    border-radius: 15px;        /* rounded-lg / your custom radius */
+    background-color: white;
+    font-size: 1rem;
+    outline: none;
+    resize: both;               /* 🔥 allows resizing horizontally + vertically */
+    transition: all 0.2s ease;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.proj-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0rem;
+
+}
+
+.proj-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(22px, 2.5vw, 24px);
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+.submit-cont {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+.reg-btn {
+    font-family: "Source Sans 3", serif;
+    color: cornflowerblue;
+    font-weight: 350;
+    font-size: clamp(16px, 2.5vw, 18px);
+    text-align: center;
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 10px;
+    border: 0;
+    width: 80%;
+    height: 50px;
+}
+
+.message-box {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* Success message */
+.message-box.success {
+    background-color: #d1fae5; /* Tailwind's green-100 */
+    color: #047857;           /* green-700 */
+}
+
+/* Error message */
+.message-box.error {
+    background-color: #fee2e2; /* red-100 */
+    color: #b91c1c;            /* red-700 */
+}

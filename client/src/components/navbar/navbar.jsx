@@ -14,7 +14,7 @@ function Navbar() {
                     <a href="#services">Services</a>
                     <a href="#team">Team</a>
                     <a href="#faqs">FAQs</a>
-                    <a href="#login">Member Login</a>
+                    <a href="#registration">Registration</a>
                 </div>
             </div>
         </div>

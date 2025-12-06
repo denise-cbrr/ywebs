@@ -5,7 +5,7 @@ import qas from "./faqsData";
 
 function Faqs() {
     return(
-        <div id="#faqs" className="faqs">
+        <div id="faqs" className="faqs">
             <h1 className="c-title">Got Questions?</h1>
             <div className="card-cont">
                 {qas.map((qas, index) =>  (

@@ -3,6 +3,8 @@
     flex-direction: column;
     gap: 2rem;
     padding: 1.5rem 3rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-cont {
@@ -20,5 +22,12 @@
     color: var(--navyblue);
     margin: 2rem;
     text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .card-cont {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 

@@ -7,11 +7,11 @@ function Services() {
             <div className="mybox">
                 <div className="left-cont">
                     <div className="title-cont">
-                        <h1 className="l-title" style={{color: "white"}}>
+                        <h1 className="services-title" style={{color: "white"}}>
                             <span className="i">Need a website?</span>
                         </h1>
 
-                        <h1 className="l-title" style={{color: "white"}}>We've got your back.</h1>
+                        <h1 className="services-title" style={{color: "white"}}>We've got your back.</h1>
                     </div>
                     <div className="info-cont">
                         <p>We're here to help you create a high-quality, professional website for any purpose. 
