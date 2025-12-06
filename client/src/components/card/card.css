@@ -7,7 +7,7 @@
 }
 .card {
     width: 300px;
-    height: 400px;
+    height: 300px;
     border-radius: 25px;
     background-color: antiquewhite;
     position: relative;      /* IMPORTANT */

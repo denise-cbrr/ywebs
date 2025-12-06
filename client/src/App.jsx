@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,12 +8,13 @@ import Hero from './components/hero/hero';
 import About from './components/about/about';
 import Services from './components/services/services';
 import Faqs from './components/faqs/faqs';
+import Developers from './components/developers/developers';
 import Login from './components/register/register';
 
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [array, setArray] = useState([]);
+  // const [count, setCount] = useState(0);
+  // const [array, setArray] = useState([]);
 
 
   // const fetchAPI = async() => {
@@ -32,12 +33,13 @@ function App() {
       <Hero />
       <About />
       <Services />
+      <Developers />
       <Faqs />
       <Login />
    </>
 
 
-  )
+  );
 }
 
 export default App;

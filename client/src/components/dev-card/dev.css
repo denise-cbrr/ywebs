@@ -1,0 +1,49 @@
+.dev-card {
+    background-color: var(--lightest);
+    width: 450px;
+    height: auto;
+    padding: 1rem;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.dev-info {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.dev-pic {
+    width: 30%;
+    height: auto;
+}
+
+.dev-pic img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.dev-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 24px);
+    font-weight: lighter;
+    color: var(--navyblue);
+    margin: 0;
+}
+
+.college-year {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(18px, 2.5vw, 20px);
+    font-weight: 350;
+    color: var(--navyblue);
+    margin: 0;
+}

@@ -13,7 +13,7 @@
     perspective: 1000px;
 }
 
-.small {
+.small-text {
     font-family: 'Source Sans 3', sans-serif;
     font-size: clamp(14px, 2.5vw, 16px);
     font-weight: normal;
