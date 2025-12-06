@@ -1,4 +1,24 @@
-h1 {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 36px;
+.faqs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 3rem;
 }
+
+.card-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5rem;
+    perspective: 1000px;
+}
+
+.small {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-weight: normal;
+    color: var(--navyblue);
+    margin: 2rem;
+    text-align: center;
+}
+

@@ -4,8 +4,8 @@ import "./services.css";
 function Services() {
     return(
         <div id="services" className="services">
-            <div className="box">
-                <div className="left-side">
+            <div className="mybox">
+                <div className="left-cont">
                     <div className="title-cont">
                         <h1 className="l-title" style={{color: "white"}}>
                             <span className="i">Need a website?</span>
@@ -18,7 +18,7 @@ function Services() {
                             Explore the styles and availability of our student developers below, and reach out when you're ready to start. 
                             Our team is here to help every step of the way.</p>
                     </div>
-                    <a className="btn" href="#team">Build Your Next Project</a>
+                    <a className="mybtn" href="#team">Build Your Next Project</a>
                 </div>
         
                 <div className="img-cont">

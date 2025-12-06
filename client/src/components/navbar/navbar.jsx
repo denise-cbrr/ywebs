@@ -13,6 +13,7 @@ function Navbar() {
                     <a href="#about">About</a>
                     <a href="#services">Services</a>
                     <a href="#extra">Team</a>
+                    <a href="#faqs">FAQs</a>
                     <a href="#login">Member Login</a>
                 </div>
             </div>

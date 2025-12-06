@@ -6,7 +6,7 @@ html, body, #root {
   
 }
 
-#hero, #about, #services {
+#about, #services, #faqs{
   scroll-margin-top: 60px;
 }
 
