@@ -1,27 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-
-
-
-
-
-/* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.c-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 2.5vw, 60px);
+  font-weight: lighter;
+  text-align: center;
+  justify-content: center;
+  color: var(--navyblue);
 }
 
-a {
+.l-title {
+font-family: "Playfair Display", serif;
+font-size: clamp(40px, 2.5vw, 60px);
+font-weight: lighter;
+text-align: left;
+justify-content: center;
+color: var(--navyblue);
+}
+
+
+
+
+:root {
+  --navyblue: #0b1c48;
+  --lightest: #d5deed;
+  --darkest: #071330;
+  
+}
+
+html, body, #root {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+
+/* a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;

@@ -47,6 +47,9 @@ const s3_key = '679415713CE7280FA331';
 const s3_secret = 'LQPJN8loEex8Mf6RYLmRcSRAljTKXp2o9Y592n4R';
 const bucketName = 'ywebs';  // The "folder" name where we'll store our database file
 
+const { Mutex } = require('async-mutex');
+const mutex = new Mutex();
+
 // Create the Express web server
 const app = express();
 app.use(cors());  // Enable CORS so frontend and backend can communicate
@@ -64,9 +67,12 @@ async function initializeFilebase() {
     // Try to create a new bucket (like creating a new folder)
     await bucketManager.create(bucketName);
     console.log('✓ Bucket created or already exists');
-  } catch (error) {
-    // If bucket already exists, that's fine - we'll just use it
-    console.log('✓ Bucket already exists');
+  } catch (err) {
+    if (err.message.includes("BucketAlreadyOwnedByYou") || err.message.includes("BucketAlreadyExists")) {
+      console.log("✓ Bucket already exists, using existing bucket");
+    } else {
+      throw err; // real error → fail loudly
+    }
   }
   
   // ObjectManager helps us read/write files inside the bucket
@@ -87,14 +93,29 @@ async function getAllRegistrations() {
     const content = await file.download();
     
     // Convert the file content (text) into a JavaScript array
-    const data = JSON.parse(content.toString());
+    try {
+      const data = JSON.parse(content.toString());
+      console.log(`✓ Loaded ${data.length} registrations from Filebase`);
+      return data;
+    } catch (parseErr) {
+      console.error("✗ JSON parse error — the file is corrupted:", parseErr);
+      
+      // DO NOT overwrite the file — keep returning an empty array safely
+      return [];
+    }
     
-    console.log(`✓ Loaded ${data.length} registrations from Filebase`);
-    return data;  // Return the array of registrations
-  } catch (error) {
-    // If the file doesn't exist yet (first time running), return empty array
-    console.log('✓ No existing registrations file, starting fresh');
-    return [];
+  // Return the array of registrations
+  } catch (err) {
+    
+    if (err.message.includes("not found") || err.message.includes("NoSuchKey")) {
+      console.log("✓ No registrations.json found — creating a new one");
+      await saveRegistrations([]);   // Create an empty array file
+      return [];
+    }
+
+    // Any other Filebase error
+    console.error("✗ Error loading registrations:", err);
+    return []; 
   }
 }
 
@@ -113,6 +134,9 @@ async function saveRegistrations(registrations) {
 // API ENDPOINT: Add a new registration
 // When frontend sends POST request to /add with form data
 app.post("/add", async (req, res) => { 
+
+  const release = await mutex.acquire();
+
   try {
     // Extract all the fields from the request body (the form data)
     const { name, college, year, bio, email, project1Name, project1Url, project2Name, project2Url } = req.body;
@@ -127,6 +151,9 @@ app.post("/add", async (req, res) => {
     
     // Get the current list of all registrations from Filebase
     const registrations = await getAllRegistrations();
+    if (!registrations) {
+      return res.status(500).json({ success: false, error: "Database is corrupted" });
+    }
     
     // VALIDATION: Check if this email is already registered
     if (registrations.some(r => r.email === email)) {
@@ -184,6 +211,8 @@ app.post("/add", async (req, res) => {
       success: false,
       error: "Failed to add registration" 
     });
+  } finally {
+    release();
   }
 });
 
@@ -244,6 +273,8 @@ app.get("/registration/:id", async (req, res) => {
 // API ENDPOINT: Update an existing registration
 // When frontend sends PUT request to /update/12345
 app.put("/update/:id", async (req, res) => {
+
+  const release = mutex.acquire();
   try {
     // Get all registrations
     const registrations = await getAllRegistrations();
@@ -301,12 +332,16 @@ app.put("/update/:id", async (req, res) => {
       success: false,
       error: "Failed to update registration" 
     });
+  } finally {
+    release();
   }
 });
 
 // API ENDPOINT: Delete a registration
 // When frontend sends DELETE request to /delete/12345
 app.delete("/delete/:id", async (req, res) => {
+
+  const release = mutex.acquire();
   try {
     // Get all registrations
     const registrations = await getAllRegistrations();
@@ -341,6 +376,8 @@ app.delete("/delete/:id", async (req, res) => {
       success: false,
       error: "Failed to delete registration" 
     });
+  } finally {
+    release();
   }
 });
 
